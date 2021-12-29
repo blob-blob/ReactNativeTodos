@@ -7,27 +7,27 @@ import Icon from 'react-native-vector-icons/AntDesign';
 const TodoListItem = ({textValue, id, checked, onRemove, onToggle}) => {
   return (
     <View style={styles.container}>
-        <TouchableOpacity onPressOut={onToggle(id)}>
-            {checked ? (
-                <View style={styles.completeCircle}>
-                    <Icon name="circledowno" size={30} color="#3143e8" />
-                </View>
-            ) : (
-              <View style={styles.circle} />
-            )}
-        </TouchableOpacity>
-        <Text 
-            style={[
-                styles.text,
-                checked ? styles.strikeText : styles.unstrikeText
-            ]}>
-            {textValue}
+      <TouchableOpacity onPressOut={onToggle(id)}>
+        {checked ? (
+          <View style={styles.completeCircle}>
+            <Icon name="circledowno" size={30} color="#3143e8" />
+          </View>
+        ) : (
+          <View style={styles.circle} />
+        )}
+      </TouchableOpacity>
+      <Text
+        style={[
+          styles.text,
+          checked ? styles.strikeText : styles.unstrikeText,
+        ]}>
+        {textValue}
+      </Text>
+      <TouchableOpacity style={styles.buttonContainer}>
+        <Text style={styles.buttonText} onPress={onRemove(id)}>
+          <Icon name="delete" size={30} color="#e33057" />
         </Text>
-        <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.buttonText} onPress={onRemove(id)} >
-                <Icon name="delete" size={30} color="#e33057" />
-            </Text>
-        </TouchableOpacity>
+      </TouchableOpacity>
     </View>
   );
 };
